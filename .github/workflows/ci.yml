@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+# 1. This tells GitHub when to run the automation
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # 2. This is the virtual machine GitHub uses to run your jobs
+    runs-on: ubuntu-latest
+
+    steps:
+    # 3. Pulls your code into the GitHub virtual machine
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 4. Automates the Docker Compose build process
+    - name: Build Docker Images
+      run: docker-compose build
+
+    # 5. (Optional) Start the containers in the background to ensure they run without crashing
+    - name: Test Containers Run
+      run: docker-compose up -d
