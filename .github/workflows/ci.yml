@@ -15,6 +15,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Using the command without the hyphen
+      # Use 'docker compose' (with a space), not 'docker-compose'
       - name: Build Docker Images
         run: docker compose build
