@@ -1,9 +1,13 @@
 import pytest
+import sys
+import os
+
+# Add the parent directory to sys.path so 'app' can be found
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import app
 
 def test_homepage():
-    # Create a test client for your Flask app
     client = app.test_client()
     response = client.get('/')
-    # Assert that the app returns a 200 OK status
     assert response.status_code == 200
