@@ -12,10 +12,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # This action sets up Docker Buildx and ensures everything is installed
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Use the modern 'docker compose' command (note the space, not hyphen)
+      # Using the command without the hyphen
       - name: Build Docker Images
         run: docker compose build
